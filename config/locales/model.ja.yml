@@ -1,0 +1,18 @@
+ja:
+  activerecord:
+    models:
+      review: "レビュー"
+      user: "ユーザ"
+    attributes:
+      review:
+        title: "タイトル"
+        content: "内容"
+      user:
+        title: "タイトル"
+        name: "ユーザ名"
+        email: "メールアドレス"
+        content: "内容"
+        current_password: "現在のパスワード"
+        password: "パスワード"
+        password_confirmation: "確認用パスワード"
+        remember_me: "ログインを記憶"
