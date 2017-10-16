@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+.navbar {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.dropdown {
+  display: inline-block;
+  vertical-align: middle;
+
+}
+.dropdown div {
+  display: block;
+  height: 4px;
+  width: 24px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-right: auto;
+  margin-left: auto;
+  background-color:#444;
+  border-radius: 2px;
+}
