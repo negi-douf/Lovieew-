@@ -2,6 +2,8 @@
   <div class="col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
     <h1>タイムライン</h1>
 
+    <%= render "layouts/flash" %>
+
     <div class="reviews">
       <% @reviews.each do |review| %>
         <div class="review">
