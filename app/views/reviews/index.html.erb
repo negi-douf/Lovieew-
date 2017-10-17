@@ -1,5 +1,17 @@
 <div class="container">
   <div class="col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
-    <h1>test</h1>
+    <h1>タイムライン</h1>
+
+    <div class="reviews">
+      <% @reviews.each do |review| %>
+        <div class="review">
+          <div class="reviews_owner">
+            <%= review.user.name %>
+          </div>
+          <%= review.content %>
+        </div>
+        <br />
+      <% end %>
+    </div>
   </div>
 </div>
