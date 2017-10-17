@@ -1,6 +1,19 @@
 <div class="container">
   <div class="col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
     <%= form_for(@review) do |f| %>
+      <% if @errors %>
+        <div class="error_explanation">
+          <h3><%= @errors.count %>件のエラーがあります。</h3>
+          <ul>
+            <% @errors.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="review_form">
+      </div>
     <% end %>
   </div>
 </div>
