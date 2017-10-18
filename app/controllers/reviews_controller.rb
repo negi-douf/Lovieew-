@@ -36,6 +36,14 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    if @review.update(review_params)
+      flash[:success] = "レビューを更新しました！"
+      redirect_to root_path
+    else
+      flash[:danger] = "レビューの更新に失敗しました。"
+      set_errors
+      redirect_to edit_review_path(@review.id)
+    end
   end
 
   def destroy
