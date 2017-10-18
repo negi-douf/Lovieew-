@@ -47,6 +47,14 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    if @review.destroy
+      flash[:success] = "レビューを削除しました。"
+      redirect_to root_path
+    else
+      flash[:danger] = "レビューの削除に失敗しました。"
+      set_errors
+      redirect_to review_path(@review.id)
+    end
   end
 
   private
