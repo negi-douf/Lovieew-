@@ -32,6 +32,7 @@ class ReviewsController < ApplicationController
   end
 
   def edit
+    get_errors
   end
 
   def update
