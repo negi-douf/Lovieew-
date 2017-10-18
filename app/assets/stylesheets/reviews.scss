@@ -1,3 +1,14 @@
 // Place all the styles related to the reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.reviews .review {
+  background-color: white;
+  border: solid;
+  border-color: #ffe0eb;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 10px;
+}
