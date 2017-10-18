@@ -12,7 +12,19 @@
           <div class="reviews_owner">
             <%= review.user.name %>
           </div>
-          <%= review.content %>
+          <br />
+
+          <div class="review_title">
+            <p><strong><%= review.title %></strong></p>
+          </div>
+
+          <div class="object">
+            <p>レビュー対象: <font size="5"><%= review.object %></font></p>
+          </div>
+
+          <div class="content">
+            <%= link_to review.content, review_path(review.id) %>
+          </div>
         </div>
         <br />
       <% end %>

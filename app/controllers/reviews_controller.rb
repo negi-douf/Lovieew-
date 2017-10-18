@@ -1,12 +1,13 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   # エラー出力用のグローバル変数
   # エラーメッセージを格納する
   $errors = []
 
   def index
-    @reviews = Review.all
+    @reviews = Review.all.sort.reverse
   end
 
   def new
@@ -54,5 +55,9 @@ class ReviewsController < ApplicationController
   def get_errors
     @errors = $errors
     $errors = []
+  end
+
+  def set_review
+    @review = Review.find_by(id: params[:id])
   end
 end

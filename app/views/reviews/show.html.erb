@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+    <div class="review">
+      <div class="reviews_owner">
+        <%= @review.user.name %>
+      </div>
+      <br />
+
+      <div class="review_title">
+        <p><%= @review.title %></p>
+      </div>
+
+      <div class="object">
+        <p>レビュー対象: <font size="5"><%= @review.object %></font></p>
+      </div>
+
+      <div class="content">
+        <%= link_to @review.content, review_path(@review.id) %>
+      </div>
+
+      <div class="owners_buttons">
+        <% if current_user.id == @review.user.id %>
+          <%= link_to "編集", edit_review_path(@review.id), class: "btn btn-success btn-sm" %>
+          <%= link_to "削除", review_path(@review.id), method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm" %>
+        <% end %>
+        </div
+    </div>
+    <br />
+  </div>
+</div>
