@@ -6,6 +6,8 @@
     <br />
 
     <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
-    </div>
+    <br />
+
+    <%= link_to "戻る", review_path(@review) %>
   </div>
 </div>
