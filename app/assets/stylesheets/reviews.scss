@@ -14,7 +14,7 @@
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   margin-top: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 80px;
   padding: 20px;
   padding-left: 30px;
   padding-bottom: 30px;
@@ -42,15 +42,11 @@
   color: black;
 }
 
-.right {
-  text-align: right;
-}
-
-.owners_buttons {
+.owner_buttons {
   text-align: right;
   margin-top: 20px;
 }
 
 .owners_buttons > a {
-  margin-left: 7px;
+  margin-right: 7px;
 }

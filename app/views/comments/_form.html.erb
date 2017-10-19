@@ -1,0 +1,11 @@
+<%= form_for([review,comment], remote: true) do |f| %>
+  <%= f.hidden_field :review_id %>
+  <div class="field">
+    <%= f.text_field :content, placeholder: "コメント", class: "form-control"  %>
+  </div>
+  <br />
+
+  <div class="actions">
+    <%= f.submit "投稿", class: "btn btn-primary" %>
+  </div>
+<% end %>

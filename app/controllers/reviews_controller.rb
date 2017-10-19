@@ -29,6 +29,8 @@ class ReviewsController < ApplicationController
   end
 
   def show
+    @comment = @review.comments.build
+    @comments = @review.comments
   end
 
   def edit
@@ -59,22 +61,22 @@ class ReviewsController < ApplicationController
 
   private
 
-  def review_params
-    params.require(:review).permit(:title, :content, :object)
-  end
-
-  def set_errors
-    if @review.invalid?
-      $errors = @review.errors.full_messages
+    def review_params
+      params.require(:review).permit(:title, :content, :object)
     end
-  end
 
-  def get_errors
-    @errors = $errors
-    $errors = []
-  end
+    def set_errors
+      if @review.invalid?
+        $errors = @review.errors.full_messages
+      end
+    end
 
-  def set_review
-    @review = Review.find_by(id: params[:id])
-  end
+    def get_errors
+      @errors = $errors
+      $errors = []
+    end
+
+    def set_review
+      @review = Review.find_by(id: params[:id])
+    end
 end

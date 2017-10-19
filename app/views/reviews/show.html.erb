@@ -18,13 +18,26 @@
         <%= link_to @review.content, review_path(@review.id) %>
       </div>
 
-      <div class="owners_buttons">
+      <div class="owner_buttons">
         <% if current_user.id == @review.user.id %>
-          <%= link_to "編集", edit_review_path(@review.id), class: "btn btn-success btn-sm" %>
-          <%= link_to "削除", review_path(@review.id), method: :delete, data: { confirm: "本当に削除しますか？"}, class: "btn btn-danger btn-sm" %>
+          <%= link_to "", edit_review_path(@review.id), class: "fa fa-pencil-square-o fa-lg" %>
+          <%= link_to "", review_path(@review.id), class: "fa fa-trash-o fa-lg", method: :delete, data: { confirm: "本当に削除してよろしいですか？"} %>
         <% end %>
-        </div
+      </div>
     </div>
     <br />
+
+    <div class="comments">
+      <div class="child row">
+        <h4>コメント</h4>
+        <div id="comments_area">
+          <%= render partial: 'comments/index', locals: { comments: @comments, review: @review } %>
+        </div>
+        <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
+        <br />
+        <%= link_to '戻る', root_path %>
+      </div>
+    </div>
+
   </div>
 </div>
