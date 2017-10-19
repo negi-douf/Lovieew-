@@ -4,4 +4,6 @@ class Review < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 400 }
 
   belongs_to :user
+
+  has_many :comments, dependent: :destroy
 end
