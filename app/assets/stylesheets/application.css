@@ -39,3 +39,11 @@
 footer {
   margin-top: 80px;
 }
+
+#input-file {
+  max-width: 300px;
+  max-height: 300px;
+  margin-left: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

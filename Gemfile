@@ -14,6 +14,8 @@ gem "devise"
 gem "rails_admin"
 gem "cancan"
 gem "dotenv-rails"
+gem "carrierwave"
+gem "mini_magick"
 
 group :development, :test do
   gem 'byebug'
