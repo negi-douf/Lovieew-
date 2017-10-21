@@ -23,7 +23,9 @@
             <p>レビュー対象: <font size="5"><%= review.object %></font></p>
           </div>
 
-          <%= show_picture(review) unless review.picture.blank? %>
+          <div class="picture">
+            <%= show_picture(review) unless review.picture.blank? %>
+          </div>
           <br />
 
           <div class="content">
