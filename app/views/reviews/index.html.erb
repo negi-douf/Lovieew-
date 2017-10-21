@@ -23,6 +23,9 @@
             <p>レビュー対象: <font size="5"><%= review.object %></font></p>
           </div>
 
+          <%= show_picture(review) unless review.picture.blank? %>
+          <br />
+
           <div class="content">
             <%= link_to review.content, review_path(review.id) %>
           </div>

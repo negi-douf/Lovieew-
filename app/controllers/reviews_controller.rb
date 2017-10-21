@@ -62,7 +62,7 @@ class ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:title, :content, :object)
+      params.require(:review).permit(:title, :content, :object, :picture, :picture_cache)
     end
 
     def set_errors

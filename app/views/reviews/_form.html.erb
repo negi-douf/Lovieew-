@@ -20,6 +20,13 @@
     <%= f.text_field :object, class: "form form-control" %>
     <br />
 
+    <div class="field" id="input-picture">
+      <%= show_picture(review) if show_picture(review) %>
+      <%= f.file_field :picture %>
+      <%= f.hidden_field :picture_cache %>
+    </div>
+    <br />
+
     <%= f.label "400文字以内で語れ！！" %>
     <%= f.text_area :content, class: "form form-control" %>
     <br />
