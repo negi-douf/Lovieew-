@@ -10,6 +10,7 @@
       <% @reviews.each do |review| %>
         <div class="review">
           <div class="reviews_owner">
+            <%= show_avatar(review.user) if show_avatar(review.user) %>
             <%= review.user.name %>
           </div>
           <br />
