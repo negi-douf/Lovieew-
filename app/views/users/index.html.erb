@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+    <h1>ユーザリスト</h1>
+    <br />
+
+    <div class="user_list">
+      <% @users.each do |user| %>
+        <div class="user">
+          <% unless user == current_user %>
+            <%= link_to(user) do %>
+              <%= show_avatar(user) if show_avatar(user) %>
+              <%= user.name %>
+            <% end %>
+          <% end %>
+          <br />
+          <div class="follow_button">
+            <%= render "follow_form", user: user %>
+          </div>
+        </div>
+        <br />
+      <% end %>
+    </div>
+  </div>
+</div>

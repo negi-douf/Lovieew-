@@ -1,0 +1,17 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user > a {
+  color: black;
+}
+
+.user > a > img {
+  max-width: 50px;
+  max-height: 50px;
+  margin-right: 15px;
+}
+
+.user .follow_button {
+  text-align: right;
+}

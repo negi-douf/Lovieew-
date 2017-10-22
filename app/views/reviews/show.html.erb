@@ -2,7 +2,10 @@
   <div class="col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
     <div class="review">
       <div class="reviews_owner">
-        <%= @review.user.name %>
+        <%= link_to(@review.user) do %>
+          <%= show_avatar(@review.user) if show_avatar(@review.user) %>
+          <%= @review.user.name %>
+        <% end %>
       </div>
       <br />
 
