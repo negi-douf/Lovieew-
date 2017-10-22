@@ -31,7 +31,7 @@
 .navbar {
   padding-left: 10px;
   padding-right: 10px;
-  background-color: #f159a5;
+  background-color: #e9559f;
 }
 
 .navbar .container-fluid .navbar-header > a {
@@ -45,7 +45,6 @@
 .dropdown {
   display: inline-block;
   vertical-align: middle;
-
 }
 
 .dropdown div {
