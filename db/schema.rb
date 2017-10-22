@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171022095429) do
+ActiveRecord::Schema.define(version: 20171022131936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,10 @@ ActiveRecord::Schema.define(version: 20171022095429) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "nices", ["review_id", "user_id"], name: "index_nices_on_review_id_and_user_id", unique: true, using: :btree
+  add_index "nices", ["review_id"], name: "index_nices_on_review_id", using: :btree
+  add_index "nices", ["user_id"], name: "index_nices_on_user_id", using: :btree
 
   create_table "relationships", force: :cascade do |t|
     t.integer  "follower_id"
