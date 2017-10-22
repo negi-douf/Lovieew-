@@ -1,0 +1,3 @@
+<%= form_for(current_user.nices.build(review_id: review.id), url: user_nice_index_path(current_user.id), html: {method: "patch"}, remote: true)  do |f| %>
+  <%= f.submit "★", class: "btn btn-nice btn-sm" %>
+<% end %>

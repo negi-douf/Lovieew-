@@ -9,30 +9,7 @@
     <div class="reviews">
       <% @reviews.each do |review| %>
         <div class="review">
-          <div class="reviews_owner">
-            <%= link_to(review.user) do %>
-              <%= show_avatar(review.user) if show_avatar(review.user) %>
-              <%= review.user.name %>
-            <% end %>
-          </div>
-          <br />
-
-          <div class="review_title">
-            <p><strong><%= review.title %></strong></p>
-          </div>
-
-          <div class="object">
-            <p>レビュー対象: <font size="5"><%= review.object %></font></p>
-          </div>
-
-          <div class="picture">
-            <%= show_picture(review) unless review.picture.blank? %>
-          </div>
-          <br />
-
-          <div class="content">
-            <%= link_to simple_format(review.content), review_path(review.id) %>
-          </div>
+          <%= render "review", review: review %>
         </div>
         <br />
       <% end %>
