@@ -3,9 +3,10 @@ class Review < ActiveRecord::Base
   validates :object, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 400 }
 
-  belongs_to :user
-
   has_many :comments, dependent: :destroy
+  has_many :nices, dependent: :destroy
+
+  belongs_to :user
 
   mount_uploader :picture, PictureUploader
 end
