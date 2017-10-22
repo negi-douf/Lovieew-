@@ -5,19 +5,19 @@
 
     <div class="user_list">
       <% @users.each do |user| %>
-        <div class="user">
-          <% unless user == current_user %>
+        <% unless user == current_user %>
+          <div class="user">
             <%= link_to(user) do %>
               <%= show_avatar(user) if show_avatar(user) %>
               <%= user.name %>
             <% end %>
-          <% end %>
           <br />
           <div class="follow_button">
             <%= render "follow_form", user: user %>
           </div>
         </div>
         <br />
+        <% end %>
       <% end %>
     </div>
   </div>
