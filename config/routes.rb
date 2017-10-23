@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show] do
-    resources :nice, only: [:index, :create, :destroy]
+    resources :nices, only: [:index, :create, :destroy]
   end
   resources :relationships, only: [:create, :destroy]
 
