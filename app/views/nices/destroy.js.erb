@@ -1,1 +1,1 @@
-$("#nice_form_"+"<%= @review.id %>").html("<%= escape_javascript(render partial: 'nices/form', locals: { review: @review } ) %>")
+$("#nice_form_"+"<%= @review.id %>").html("<%= j(render partial: 'nices/form', locals: { review: @review } ) %>")
