@@ -1,3 +1,19 @@
 // Place all the styles related to the nices controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.nice .btn-nice {
+  background-color: white;
+  border-color: #ffa50d;
+  border-width: 3px;
+  color: #ffa50d;
+  font-size: 120%
+}
+
+.nice .btn-niced {
+  background-color: #ffa50d;
+  color: white;
+  font-size: 120%;
+  border-color: #ffa50d;
+  border-width: 3px;
+}
