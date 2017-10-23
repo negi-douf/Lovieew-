@@ -1,6 +1,7 @@
 <% nice = current_user.nices.find_by(review_id: review.id) %>
 <% unless nice %>
   <%= form_for(current_user.nices.build(review_id: review.id), url: user_nices_path(current_user.id), html: {method: "post"}, remote: true)  do |f| %>
+    <%= f.hidden_field :review_id %>
     <%= f.submit "★", class: "btn btn-nice btn-sm" %>
   <% end %>
 <% else %>
