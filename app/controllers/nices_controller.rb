@@ -13,6 +13,6 @@ class NicesController < ApplicationController
   private
 
     def nice_params
-      params.require(:nice).premit(:review_id)
+      params.require(:nice).premit(:id, :review_id)
     end
 end
