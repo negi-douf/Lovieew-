@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :reviews do
+    collection do
+      get "ranking"
+    end
+    
     resources :comments
   end
 

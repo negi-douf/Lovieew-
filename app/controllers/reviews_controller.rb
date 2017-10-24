@@ -59,6 +59,10 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def ranking
+    @reviews = Review.order({ :nices.count :desc })
+  end
+
   private
 
     def review_params
