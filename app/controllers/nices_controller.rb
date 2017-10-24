@@ -6,6 +6,7 @@ class NicesController < ApplicationController
     @nice = current_user.nices.build(review_id: params[:nice][:review_id])
     @review = @nice.review
     @nice.save
+    @review.number_of_nices += 1
     respond_with @review
   end
 
@@ -13,6 +14,7 @@ class NicesController < ApplicationController
     @nice = Nice.find(params[:id])
     @review = @nice.review
     @nice.destroy
+    @review.number_of_nices -= 1
     respond_with @review
   end
 end

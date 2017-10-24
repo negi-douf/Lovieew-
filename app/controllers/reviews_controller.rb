@@ -60,7 +60,7 @@ class ReviewsController < ApplicationController
   end
 
   def ranking
-    @reviews = Review.order({ :nices.count :desc })
+    @reviews = Review.order(number_of_nices: :desc)
   end
 
   private

@@ -4,7 +4,11 @@
       <h1>ランキング</h1>
     </div>
 
-    <% @reviews.each do |f| %>
+    <% @reviews.each do |review| %>
+      <div class="review">
+        <%= render "review", review: review %>
+      </div>
+      <br />
     <% end %>
   </div>
 </div>
