@@ -1,4 +1,4 @@
-<div id="nice_form_<% review.id %>">
+<div id="nice_form_<%= review.id %>">
   <!-- nice の有無を判定し、表示を切り替える -->
   <% nice = current_user.nices.find_by(review_id: review.id) %>
   <% unless nice %>
