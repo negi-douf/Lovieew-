@@ -5,6 +5,8 @@ class Review < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
   has_many :nices, dependent: :destroy
+  has_many :categories, dependent: :destroy
+  has_many :tags, through: :categories, source: :tag
 
   belongs_to :user
 
