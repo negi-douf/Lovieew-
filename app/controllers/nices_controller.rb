@@ -7,6 +7,7 @@ class NicesController < ApplicationController
     @review = @nice.review
     @nice.save
     @review.number_of_nices += 1
+    @review.save
     respond_with @review
   end
 
@@ -15,6 +16,7 @@ class NicesController < ApplicationController
     @review = @nice.review
     @nice.destroy
     @review.number_of_nices -= 1
+    @review.save
     respond_with @review
   end
 end
