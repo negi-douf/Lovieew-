@@ -31,7 +31,7 @@
     <%= f.text_area :content, class: "form form-control" %>
     <br />
 
-    <%= render "tags/form" %>
+    <%= render :partial => "tags/form", :locals => { f: f } %>
 
     <%= f.submit "投稿！", class: "btn btn-primary" %>
   </div>
