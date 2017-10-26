@@ -1,8 +1,14 @@
-.tag_form .btn-default {
+.tag_form .btn-add {
   margin-bottom: 40px;
+  margin-top: 10px;
   margin-left: 10px;
 }
 
 .tag_form .form-control {
   width: 80%;
+  display: inline-block;
+}
+
+.tag_form .btn-remove {
+  display: inline-block;
 }

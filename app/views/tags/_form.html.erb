@@ -2,6 +2,7 @@
   <p><strong>タグ</strong></p>
   <%= f.nested_fields_for :tags do |ff| %>
     <%= ff.text_field :content, class: "form form-control" %>
+    <%= ff.remove_nested_fields_link '-', class: 'btn btn-default btn-remove' %>
   <% end %>
-  <%= f.add_nested_fields_link :tags, '+', class: 'btn btn-default' %>
+  <%= f.add_nested_fields_link :tags, '+', class: 'btn btn-default btn-add' %>
 </div>
