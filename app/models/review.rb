@@ -10,7 +10,7 @@ class Review < ActiveRecord::Base
 
   belongs_to :user
 
-  accepts_nested_attributes_for :tags, allow_destroy: true, limit: 5
+  accepts_nested_attributes_for :tags
 
   mount_uploader :picture, PictureUploader
 end
