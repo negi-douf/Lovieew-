@@ -23,6 +23,8 @@
   <%= link_to simple_format(review.content), review_path(review.id) %>
 </div>
 
+<%= render :partial => "tags/tag", :locals => { review: review } %>
+
 <% if user_signed_in? %>
   <div class="nice">
     <%= render partial: 'nices/form', locals: { review: review } %>

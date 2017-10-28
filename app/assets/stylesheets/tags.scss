@@ -12,3 +12,22 @@
 .tag_form .btn-remove {
   display: inline-block;
 }
+
+.tags {
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.tags .tag {
+  margin-left: 15px;
+  margin-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 5px;
+  background-color: #e0ffff;
+  display: inline;
+}
+
+.tags .tag > span {
+}
