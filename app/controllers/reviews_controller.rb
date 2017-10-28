@@ -2,17 +2,12 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
-  # エラー出力用のグローバル変数
-  # エラーメッセージを格納する
-  $errors = []
-
   def index
     @reviews = Review.all.sort.reverse
   end
 
   def new
     @review = Review.new
-    get_errors
   end
 
   def create
@@ -44,12 +39,11 @@ class ReviewsController < ApplicationController
           break
         end
       end
-      flash[:success] = "レビューを投稿しました！"
+      flash.now[:success] = "レビューを投稿しました！"
       redirect_to reviews_path
     else
-      flash[:danger] = "レビューの投稿に失敗しました。"
-      set_errors
-      redirect_to new_review_path
+      flash.now[:danger] = "レビューの投稿に失敗しました。"
+      render "new"
     end
   end
 
@@ -59,27 +53,24 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    get_errors
   end
 
   def update
     if @review.update(review_params)
-      flash[:success] = "レビューを更新しました！"
+      flash.now[:success] = "レビューを更新しました！"
       redirect_to root_path
     else
-      flash[:danger] = "レビューの更新に失敗しました。"
-      set_errors
+      flash.now[:danger] = "レビューの更新に失敗しました。"
       redirect_to edit_review_path(@review.id)
     end
   end
 
   def destroy
     if @review.destroy
-      flash[:success] = "レビューを削除しました。"
+      flash.now[:success] = "レビューを削除しました。"
       redirect_to root_path
     else
-      flash[:danger] = "レビューの削除に失敗しました。"
-      set_errors
+      flash.now[:danger] = "レビューの削除に失敗しました。"
       redirect_to review_path(@review.id)
     end
   end
@@ -93,17 +84,6 @@ class ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:title, :content, :object, :picture, :picture_cache,
         tags_attributes: [:content] )
-    end
-
-    def set_errors
-      if @review.invalid?
-        $errors = @review.errors.full_messages
-      end
-    end
-
-    def get_errors
-      @errors = $errors
-      $errors = []
     end
 
     def set_review

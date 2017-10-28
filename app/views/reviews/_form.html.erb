@@ -1,8 +1,8 @@
-<% unless errors.empty? %>
+<% if  review.errors.any? %>
   <div class="error_explanation">
-    <h3><%= errors.count %>件のエラーがあります。</h3>
+    <h3><%= review.errors.count %>件のエラーがあります。</h3>
     <ul>
-      <% errors.each do |msg| %>
+      <% review.errors.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
     </ul>
