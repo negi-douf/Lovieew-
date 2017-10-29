@@ -8,7 +8,7 @@
 
     <div class="reviews">
       <% @reviews.each do |review| %>
-        <% if current_user.following?(eview.user) %>
+        <% if review.user == current_user || current_user.following?(review.user) %>
           <div class="review">
             <%= render "review", review: review %>
           </div>
