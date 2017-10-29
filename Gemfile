@@ -17,6 +17,7 @@ gem "dotenv-rails"
 gem "carrierwave"
 gem "mini_magick"
 gem "nested_form_fields"
+gem "kaminari"
 
 group :development, :test do
   gem 'byebug'

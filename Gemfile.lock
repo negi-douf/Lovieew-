@@ -255,6 +255,7 @@ DEPENDENCIES
   dotenv-rails
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mini_magick
   nested_form_fields
   pg

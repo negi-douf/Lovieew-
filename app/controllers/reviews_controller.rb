@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   def index
-    @reviews = Review.all.sort.reverse
+    @reviews = Review.order(created_at: :desc).page(params[:page])#.sort.reverse
   end
 
   def new
@@ -66,7 +66,7 @@ class ReviewsController < ApplicationController
   end
 
   def ranking
-    @reviews = Review.order(number_of_nices: :desc)
+    @reviews = Review.order(number_of_nices: :desc).page(params[:page])
   end
 
   private
