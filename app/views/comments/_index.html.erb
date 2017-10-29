@@ -8,12 +8,14 @@
           <%= comment.user.name %>
         </div>
         <p id="comments_content"><%= comment.content %></p>
-        <% if current_user.id == comment.user.id %>
-          <p class="right">
-            <%= link_to '', edit_review_comment_path(review, comment), class: "fa fa-pencil-square-o fa-lg" %>
-            <%= link_to '', review_comment_path(review, comment), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除してよろしいですか？' } %>
-          </p>
-          <br />
+        <% if user_signed_in? %>
+          <% if current_user.id == comment.user.id %>
+            <p class="right">
+              <%= link_to '', edit_review_comment_path(review, comment), class: "fa fa-pencil-square-o fa-lg" %>
+              <%= link_to '', review_comment_path(review, comment), class: "fa fa-trash-o fa-lg", method: :delete, remote: true, data: { confirm: '本当に削除してよろしいですか？' } %>
+            </p>
+            <br />
+          <% end %>
         <% end %>
       </li>
     <% end %>
