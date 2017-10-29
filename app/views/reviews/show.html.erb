@@ -3,12 +3,14 @@
     <div class="review">
       <%= render "review", review: @review %>
 
-      <div class="owner_buttons">
-        <% if current_user.id == @review.user.id %>
-          <%= link_to "", edit_review_path(@review.id), class: "fa fa-pencil-square-o fa-lg" %>
-          <%= link_to "", review_path(@review.id), class: "fa fa-trash-o fa-lg", method: :delete, data: { confirm: "本当に削除してよろしいですか？"} %>
-        <% end %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="owner_buttons">
+          <% if current_user.id == @review.user.id %>
+            <%= link_to "", edit_review_path(@review.id), class: "fa fa-pencil-square-o fa-lg" %>
+            <%= link_to "", review_path(@review.id), class: "fa fa-trash-o fa-lg", method: :delete, data: { confirm: "本当に削除してよろしいですか？"} %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
     <br />
 
@@ -18,7 +20,9 @@
         <div id="comments_area">
           <%= render partial: 'comments/index', locals: { comments: @comments, review: @review } %>
         </div>
-        <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
+        <% if user_signed_in? %>
+          <%= render partial: 'comments/form', locals: { comment: @comment, review: @review } %>
+        <% end %>
         <br />
         <%= link_to '戻る', root_path %>
       </div>
