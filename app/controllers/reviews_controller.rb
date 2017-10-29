@@ -14,33 +14,20 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
-      # tag を順に作っていく（最大10個）
-      # ブランクの場合もあるため判定していく
-      tags_count = 0
-      count = 0
-      # tag の数が限度以内であることをチェック
-      while tags_count < 10 do
-        # params が存在しなかった場合のためにエラー処理
-        begin
-          unless review_params[:tags_attributes][:"#{count}"][:content].blank?
-            # 同じ内容の tag が見つかった場合は保存しない
-            @exist_tag = Tag.find_by(content: review_params[:tags_attributes][:"#{count}"][:content])
-            unless @exist_tag
-              @tag = Tag.new(content: review_params[:tags_attributes][:"#{count}"][:content])
-              @tag.save
-              Category.create!(review_id: @review.id, tag_id: @tag.id)
-              tags_count += 1
-            else
-              @category = Category.create!(review_id: @review.id, tag_id: @exist_tag.id)
-            end
-          end
-          count += 1
-        rescue
-          break
-        end
-      end
       flash.now[:success] = "レビューを投稿しました！"
       redirect_to reviews_path
+      # レコードの中に見つかったタグのパラメータを
+      # 消しているため、別処理で保存する
+      unless @exist_tags.blank?
+        # 重複した要素は消す
+        @exist_tags.uniq!
+        binding.pry
+        @exist_tags.each do |tag|
+          binding.pry
+          @category = Category.create!(review_id: @review.id, tag_id: Tag.find_by(content: tag).id)
+        end
+        @exist_tags = []
+      end
     else
       flash.now[:danger] = "レビューの投稿に失敗しました。"
       render "new"
@@ -82,11 +69,69 @@ class ReviewsController < ApplicationController
   private
 
     def review_params
-      params.require(:review).permit(:title, :content, :object, :picture, :picture_cache,
+      # params を判定して必要に応じて修正
+      if params[:review][:tags_attributes]
+        tmp_params = params
+        tags_list = [tmp_params[:review][:tags_attributes][:"0"][:content]]
+        count = 0
+        first = 0
+        # 存在しない値にアクセスするとエラーとなるため、
+        # rescue で break する
+        begin
+          # params にアクセスできる間ループする
+          while content = tmp_params[:review][:tags_attributes][:"#{count}"][:content] do
+            # tags_list をイテレート、比較して値をユニークに。
+            tags_list.each do |tag|
+              # 11個目以降の場合、
+              # params 内に同じデータがあれば場合、
+              # レコード内に既に同一のタグが存在する場合はパラメータを削除
+              binding.pry
+              if count == first
+                if Tag.find_by(content: content)
+                  @exist_tags.append(tmp_params[:review][:tags_attributes][:"#{count}"][:content])
+                  tmp_params[:review][:tags_attributes].delete("#{first}")
+                  first += 1
+                  tags_list = [tmp_params[:review][:tags_attributes][:"#{first}"][:content]]
+                end
+              elsif tags_list.count > 10 || content == tag
+                tmp_params[:review][:tags_attributes].delete("#{count}")
+                binding.pry
+                break
+              elsif Tag.find_by(content: content)
+                @exist_tags.append(tmp_params[:review][:tags_attributes][:"#{count}"][:content])
+                tmp_params[:review][:tags_attributes].delete("#{count}")
+                binding.pry
+                break
+              elsif tag == tags_list.last
+                tags_list.append(tmp_params[:review][:tags_attributes][:"#{count}"][:content])
+                break
+              end
+            end
+            count += 1
+          end
+        rescue
+        end
+        binding.pry
+      end
+      tmp_params.require(:review).permit(:title, :content, :object, :picture, :picture_cache,
         tags_attributes: [:content] )
     end
 
     def set_review
       @review = Review.find_by(id: params[:id])
     end
+
+    def initialize
+      # すでに存在していたタグを記憶し
+      # 別で紐付ける
+      @exist_tags = []
+      super
+    end
+
+    # def ReviewsController
+    #   # すでに存在していたタグを記憶し
+    #   # 別で紐付ける
+    #   @exist_tags = []
+    #   super
+    # end
 end
