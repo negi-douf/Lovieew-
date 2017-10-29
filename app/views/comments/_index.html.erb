@@ -5,6 +5,7 @@
         <div class="avatar">
           <!-- image -->
           <!-- link -->
+          <%= show_avatar(comment.user) if show_avatar(comment.user) %>
           <%= comment.user.name %>
         </div>
         <p id="comments_content"><%= comment.content %></p>
