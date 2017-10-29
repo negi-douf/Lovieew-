@@ -1,7 +1,7 @@
 <div class="tag_form">
   <p><strong>タグ（最大10個）</strong></p>
   <%= f.nested_fields_for :tags do |ff| %>
-    <%= ff.text_field :content, class: "form form-control" %>
+    <%= ff.text_field :content, autofocus: true, class: "form form-control" %>
     <%= ff.remove_nested_fields_link '-', class: 'btn btn-default btn-remove' %>
   <% end %>
   <%= f.add_nested_fields_link :tags, '+', class: 'btn btn-default btn-add' %>

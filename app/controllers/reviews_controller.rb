@@ -11,7 +11,12 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = Review.new(review_params)
+    begin
+      @review = Review.new(review_params)
+    rescue
+      flash.now[:danger] = "レビューの投稿に失敗しました。"
+      render "new"
+    end
     @review.user_id = current_user.id
     if @review.save
       flash.now[:success] = "レビューを投稿しました！"
@@ -21,9 +26,7 @@ class ReviewsController < ApplicationController
       unless @exist_tags.blank?
         # 重複した要素は消す
         @exist_tags.uniq!
-        binding.pry
         @exist_tags.each do |tag|
-          binding.pry
           @category = Category.create!(review_id: @review.id, tag_id: Tag.find_by(content: tag).id)
         end
         @exist_tags = []
@@ -85,7 +88,7 @@ class ReviewsController < ApplicationController
               # 11個目以降の場合、
               # params 内に同じデータがあれば場合、
               # レコード内に既に同一のタグが存在する場合はパラメータを削除
-              binding.pry
+              # binding.pry
               if count == first
                 if Tag.find_by(content: content)
                   @exist_tags.append(tmp_params[:review][:tags_attributes][:"#{count}"][:content])
@@ -93,16 +96,15 @@ class ReviewsController < ApplicationController
                   first += 1
                   tags_list = [tmp_params[:review][:tags_attributes][:"#{first}"][:content]]
                 end
-              elsif tags_list.count > 10 || content == tag
+              elsif tags_list.count > 9 || content == tag
                 tmp_params[:review][:tags_attributes].delete("#{count}")
-                binding.pry
                 break
               elsif Tag.find_by(content: content)
                 @exist_tags.append(tmp_params[:review][:tags_attributes][:"#{count}"][:content])
                 tmp_params[:review][:tags_attributes].delete("#{count}")
-                binding.pry
                 break
               elsif tag == tags_list.last
+                binding.pry
                 tags_list.append(tmp_params[:review][:tags_attributes][:"#{count}"][:content])
                 break
               end

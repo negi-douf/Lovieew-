@@ -1,12 +1,15 @@
-<% if  review.errors.any? %>
-  <div class="error_explanation">
-    <h3><%= review.errors.count %>件のエラーがあります。</h3>
-    <ul>
-      <% review.errors.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
+<% begin %>
+  <% if review.errors.any? %>
+    <div class="error_explanation">
+      <h3><%= review.errors.count %>件のエラーがあります。</h3>
+      <ul>
+        <% review.errors.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% rescue %>
 <% end %>
 <br />
 
