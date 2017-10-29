@@ -3,6 +3,9 @@ ja:
     models:
       review: "レビュー"
       user: "ユーザ"
+      tag: "タグ"
+      comment: "コメント"
+      nice: "いいね"
     attributes:
       review:
         title: "タイトル"
@@ -15,3 +18,7 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+      tag:
+        content: "内容"
+      comment:
+        content: "内容"
