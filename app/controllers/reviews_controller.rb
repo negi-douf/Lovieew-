@@ -11,12 +11,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    begin
-      @review = Review.new(review_params)
-    rescue
-      flash.now[:danger] = "レビューの投稿に失敗しました。"
-      render "new"
-    end
+    @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
       flash.now[:success] = "レビューを投稿しました！"
@@ -72,9 +67,10 @@ class ReviewsController < ApplicationController
   private
 
     def review_params
+      # params 編集用
+      tmp_params = params
       # params を判定して必要に応じて修正
       if params[:review][:tags_attributes]
-        tmp_params = params
         tags_list = [tmp_params[:review][:tags_attributes][:"0"][:content]]
         count = 0
         first = 0
