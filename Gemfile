@@ -18,6 +18,7 @@ gem "carrierwave"
 gem "mini_magick"
 gem "nested_form_fields"
 gem "kaminari"
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   gem 'byebug'

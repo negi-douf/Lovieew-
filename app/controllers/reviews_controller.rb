@@ -88,7 +88,6 @@ class ReviewsController < ApplicationController
               # 11個目以降の場合、
               # params 内に同じデータがあれば場合、
               # レコード内に既に同一のタグが存在する場合はパラメータを削除
-              # binding.pry
               if count == first
                 if Tag.find_by(content: content)
                   @exist_tags.append(tmp_params[:review][:tags_attributes][:"#{count}"][:content])
@@ -104,7 +103,6 @@ class ReviewsController < ApplicationController
                 tmp_params[:review][:tags_attributes].delete("#{count}")
                 break
               elsif tag == tags_list.last
-                binding.pry
                 tags_list.append(tmp_params[:review][:tags_attributes][:"#{count}"][:content])
                 break
               end
@@ -113,7 +111,6 @@ class ReviewsController < ApplicationController
           end
         rescue
         end
-        binding.pry
       end
       tmp_params.require(:review).permit(:title, :content, :object, :picture, :picture_cache,
         tags_attributes: [:content] )
