@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     collection do
       get "ranking"
     end
-    
+
     resources :comments
   end
 
@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   end
   resources :relationships, only: [:create, :destroy]
 
-  root "reviews#index"
+  root "reviews#ranking"
 end
