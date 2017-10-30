@@ -11,6 +11,7 @@ ja:
         title: "タイトル"
         object: "レビュー対象"
         content: "内容"
+        picture: "画像"
       user:
         name: "ユーザ名"
         email: "メールアドレス"
