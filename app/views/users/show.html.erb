@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+    <div class="user_description">
+      <%= show_avatar(@user) %>
+      <h1><%= @user.name %></h1>
+    </div>
+    <br />
+
+    <h2>投稿したレビュー</h2>
+    <div class="users_reviews">
+      <% @user.reviews.each do |review| %>
+        <div class="review">
+          <%= render :partial => "reviews/review", :locals => { review: review }  %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
