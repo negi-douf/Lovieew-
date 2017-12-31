@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1">
+    <h3>レビュー検索</h3>
+
+    <div class="input-group search-form">
+      <%= form_for @keyword do |f| %>
+        <%= f.text_field :keyword, class: "form-control" %>
+        <%= button_tag :type => "submit", :class =>"btn btn-primary btn-s-md" do %>
+          <i class="fa fa-search"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

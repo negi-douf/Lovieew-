@@ -64,6 +64,15 @@ class ReviewsController < ApplicationController
     @reviews = Review.order(number_of_nices: :desc).page(params[:page])
   end
 
+  def search
+    @keyword = ""
+    if params[:keyword]
+      @keyword = params[:keyword]
+    end
+    # keywords = @keyword. スペース区切り処理
+    # @reviews = Reviews.search(:title_or_content_or_user_or_tag_cont_any => keywords).result
+  end
+
   private
 
     def review_params
@@ -123,10 +132,4 @@ class ReviewsController < ApplicationController
       super
     end
 
-    # def ReviewsController
-    #   # すでに存在していたタグを記憶し
-    #   # 別で紐付ける
-    #   @exist_tags = []
-    #   super
-    # end
 end

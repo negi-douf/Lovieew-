@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :reviews do
     collection do
       get "ranking"
+      get "search"
+      post "serch"
     end
 
     resources :comments

@@ -9,16 +9,18 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem "twitter-bootstrap-rails"
-gem "devise"
-gem "rails_admin"
-gem "cancan"
-gem "dotenv-rails"
-gem "carrierwave"
-gem "mini_magick"
-gem "nested_form_fields"
-gem "kaminari"
+gem 'twitter-bootstrap-rails'
+gem 'devise'
+gem 'rails_admin'
+gem 'cancan'
+gem 'dotenv-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'nested_form_fields'
+gem 'kaminari'
 gem 'rails_12factor', group: :production
+gem 'ransack'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug'
