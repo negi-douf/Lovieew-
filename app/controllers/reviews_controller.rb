@@ -65,9 +65,10 @@ class ReviewsController < ApplicationController
   end
 
   def search
-    @keyword = ""
     if params[:keyword]
-      @keyword = params[:keyword]
+      @keyword = String.new(params[:keyword])
+    else
+      @keyword = ""
     end
     # keywords = @keyword. スペース区切り処理
     # @reviews = Reviews.search(:title_or_content_or_user_or_tag_cont_any => keywords).result
@@ -130,6 +131,11 @@ class ReviewsController < ApplicationController
       # 別で紐付ける
       @exist_tags = []
       super
+    end
+
+    def search_params
+      pry.binding
+      params.require(:keyword)
     end
 
 end

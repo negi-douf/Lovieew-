@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     collection do
       get "ranking"
       get "search"
-      post "serch"
+      post "search"
     end
 
     resources :comments

@@ -4,7 +4,7 @@
 
     <div class="input-group search-form">
       <%= form_for @keyword do |f| %>
-        <%= f.text_field :keyword, class: "form-control" %>
+        <%= f.text_field_tag :keyword, @keyword, class: "form-control" %>
         <%= button_tag :type => "submit", :class =>"btn btn-primary btn-s-md" do %>
           <i class="fa fa-search"></i>
         <% end %>
