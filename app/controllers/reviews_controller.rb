@@ -70,8 +70,10 @@ class ReviewsController < ApplicationController
     else
       @keyword = ""
     end
-    # keywords = @keyword. スペース区切り処理
-    # @reviews = Reviews.search(:title_or_content_or_user_or_tag_cont_any => keywords).result
+    keywords = @keyword.split(" ")
+    keywords.each do |word|
+      @reviews = Review.search(:title_or_content_or_object_cont => word).result
+    end
   end
 
   private

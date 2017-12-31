@@ -12,5 +12,13 @@
         <% end %>
       <% end %>
     </div>
+
+    <div class="reviews">
+      <% @reviews.each do |review| %>
+        <div class="review">
+          <%= render "review", review: review %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
