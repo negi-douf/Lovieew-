@@ -72,3 +72,12 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+#navbar-avatar {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
