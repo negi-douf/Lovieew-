@@ -14,10 +14,12 @@
     </div>
 
     <div class="reviews">
-      <% @reviews.each do |review| %>
-        <div class="review">
-          <%= render "review", review: review %>
-        </div>
+      <% if @reviews %>
+        <% @reviews.each do |review| %>
+          <div class="review">
+            <%= render "review", review: review %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

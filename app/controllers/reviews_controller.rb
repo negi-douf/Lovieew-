@@ -72,7 +72,7 @@ class ReviewsController < ApplicationController
     end
     keywords = @keyword.split(" ")
     keywords.each do |word|
-      @reviews = Review.search(:title_or_content_or_object_cont => word).result
+      @reviews = Review.search(:title_or_content_or_object_cont => word).result.order(number_of_nices: :desc).page(params[:page])
     end
   end
 
