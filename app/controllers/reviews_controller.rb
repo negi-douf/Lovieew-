@@ -71,6 +71,7 @@ class ReviewsController < ApplicationController
       @keyword = ""
     end
     keywords = @keyword.split(" ")
+    # 検索し、いいねが多い順にソートする
     keywords.each do |word|
       @reviews = Review.search(:title_or_content_or_object_cont => word).result.order(number_of_nices: :desc).page(params[:page])
     end
